@@ -1,17 +1,17 @@
 export interface Proveedor {
   id: string;
   nombre: string;
-  contacto: number;
+  contacto: string;
   direccion: string;
-  telefono: number;
+  telefono: string;
   pais: string;
 }
 
 export interface FormularioDatos {
   nombre: string;
-  contacto: number;
+  contacto: string;
   direccion: string;
-  telefono: number;
+  telefono: string;
   pais: string;
 }
 
