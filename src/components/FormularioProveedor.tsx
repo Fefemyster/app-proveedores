@@ -1,22 +1,6 @@
-import { useState } from "react";
-import type { Proveedor } from "../types/Proveedor";
+import React from "react";
 
-export const GestorProveedor = () => {
-  /*
-  const [nombre, setNombre] = useState("");
-  const [contacto, setContact] = useState("");
-  const [direccion, setDireccion] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [pais, setPais] = useState("")
-  */
-
-  const [proveedor, setProveedor] = useState<Proveedor[]>(() => {
-    const empleadosGuardados = localStorage.getItem("empleados");
-    return empleadosGuardados
-      ? (JSON.parse(empleadosGuardados) as Proveedor[])
-      : [];
-  });
-
+export const FormularioProveedor = () => {
   return (
     <>
       <h1 className="text-4xl font-bold text-center my-6 text-pink-400">
@@ -50,9 +34,7 @@ export const GestorProveedor = () => {
             <button
               type="button"
               className="px-4 py-2 rounded bg-gray-200 cursor-pointer"
-            >
-              Agregar
-            </button>
+            ></button>
           </div>
         </form>
       </div>
