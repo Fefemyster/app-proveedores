@@ -17,4 +17,12 @@ export interface FormularioDatos {
 
 export interface Props {
   agregarActualizarProveedor: (e: Proveedor) => void;
+  proveedorEditar: Proveedor | null;
+  setProveedorEditar: (e: Proveedor | null) => void;
+}
+
+export interface ListaProveedoresProps {
+  proveedores: Proveedor[];
+  setProveedorEditar: (Proveedor: Proveedor) => void;
+  eliminarProveedor: (id: string) => void;
 }

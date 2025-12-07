@@ -1,43 +1,93 @@
-import React from "react";
+import useFormularioProveedor from "../hook/useFormularioProveedor";
+import type { Props } from "../types/Proveedor";
 
-export const FormularioProveedor = () => {
+const FormularioProveedor: React.FC<Props> = ({
+  agregarActualizarProveedor,
+  proveedorEditar,
+  setProveedorEditar,
+}) => {
+  const { formularioDatos, manejarCambio, manejarEnvio, manejarCancelacion } =
+    useFormularioProveedor(
+      proveedorEditar,
+      setProveedorEditar,
+      agregarActualizarProveedor
+    );
+
   return (
-    <>
-      <h1 className="text-4xl font-bold text-center my-6 text-pink-400">
-        Gestor de Proveedores
-      </h1>
-      <div className="flex justify-center gap-6">
-        <form>
-          <div className="mb-4">
-            <label className=" text-gray-700 mb-1 ">Nombre</label>
-            <input type="text" className="w-full border px-3 py-2 rounded" />
-          </div>
+    <div className="bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-700">
+        {proveedorEditar ? "Editar Proveedor" : "Agregar Nuevo Proveedor"}
+      </h2>
 
-          <div className="mb-4">
-            <label className=" text-gray-700 mb-1">Contacto</label>
-            <input type="text" className="w-full border px-3 py-2 rounded" />
-          </div>
+      <form onSubmit={manejarEnvio}>
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Nombre</label>
+          <input
+            name="nombre"
+            value={formularioDatos.nombre}
+            onChange={manejarCambio}
+            className="w-full border px-3 py-2 rounded"
+          />
+        </div>
 
-          <div className="mb-4">
-            <label className=" text-gray-700 mb-1">Direccion</label>
-            <input type="text" className="w-full border px-3 py-2 rounded" />
-          </div>
-          <div className="mb-4">
-            <label className=" text-gray-700 mb-1">Telefono</label>
-            <input type="text" className="w-full border px-3 py-2 rounded" />
-          </div>
-          <div className="mb-4">
-            <label className=" text-gray-700 mb-1">Pais</label>
-            <input type="text" className="w-full border px-3 py-2 rounded " />
-          </div>
-          <div className="flex gap-2 justify-end">
-            <button
-              type="button"
-              className="px-4 py-2 rounded bg-gray-200 cursor-pointer"
-            ></button>
-          </div>
-        </form>
-      </div>
-    </>
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Contacto</label>
+          <input
+            name="contacto"
+            value={formularioDatos.contacto}
+            onChange={manejarCambio}
+            className="w-full border px-3 py-2 rounded"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Direccion</label>
+          <input
+            name="direccion"
+            value={formularioDatos.direccion}
+            onChange={manejarCambio}
+            className="w-full border px-3 py-2 rounded"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Telefono</label>
+          <input
+            name="telefono"
+            value={formularioDatos.telefono}
+            onChange={manejarCambio}
+            className="w-full border px-3 py-2 rounded"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Pais</label>
+          <input
+            name="pais"
+            value={formularioDatos.pais}
+            onChange={manejarCambio}
+            className="w-full border px-3 py-2 rounded"
+          />
+        </div>
+
+        <div className="flex gap-2 justify-end">
+          <button
+            type="button"
+            onClick={manejarCancelacion}
+            className="px-4 py-2 rounded bg-gray-200"
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 rounded bg-gray-800 text-white"
+          >
+            {proveedorEditar ? "Actualizar" : "Agregar"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
+
+export default FormularioProveedor;

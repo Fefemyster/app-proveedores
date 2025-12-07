@@ -1,4 +1,4 @@
-import { GestorProveedor } from "./components/GestorProveedor";
+import GestorProveedor from "./components/GestorProveedor";
 
 function App() {
   return (

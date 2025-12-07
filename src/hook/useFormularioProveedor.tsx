@@ -48,7 +48,7 @@ const useFormularioProveedor = (
       !formularioDatos.pais.trim() ||
       !formularioDatos.telefono
     ) {
-      Swal.fire("Nombre o cargo son obligatorios", "", "warning");
+      Swal.fire("Debe llenar todos los campos", "", "warning");
       return;
     }
 

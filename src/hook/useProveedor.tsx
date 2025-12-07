@@ -4,7 +4,7 @@ import type { Proveedor } from "../types/Proveedor";
 
 export const useProveedor = () => {
   const [proveedores, setProveedores] = useState<Proveedor[]>(() => {
-    const proveedoresGuardados = localStorage.getItem("empleados");
+    const proveedoresGuardados = localStorage.getItem("proveedores");
     return proveedoresGuardados
       ? (JSON.parse(proveedoresGuardados) as Proveedor[])
       : [];
@@ -15,7 +15,7 @@ export const useProveedor = () => {
   );
 
   useEffect(() => {
-    localStorage.setItem("empleados", JSON.stringify(proveedores));
+    localStorage.setItem("proveedores", JSON.stringify(proveedores));
   }, [proveedores]);
 
   const agregarActualizarProveedor = (proveedor: Proveedor): void => {
@@ -23,7 +23,7 @@ export const useProveedor = () => {
       proveedor.id = String(Date.now());
       setProveedores((prev) => [proveedor, ...prev]);
       Swal.fire({
-        title: "Empleado agregado correctamente",
+        title: "Proveedor agregado correctamente",
         text: "",
         icon: "success",
       });
@@ -32,7 +32,7 @@ export const useProveedor = () => {
         prev.map((p) => (p.id === proveedor.id ? proveedor : p))
       );
       setProveedorEditar(null);
-      Swal.fire("Empleado actualizado correctamente", "", "success");
+      Swal.fire("Proveedor actualizado correctamente", "", "success");
     }
     console.log(proveedor);
   };
@@ -50,7 +50,7 @@ export const useProveedor = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         setProveedores(proveedores.filter((prov) => prov.id !== id));
-        Swal.fire("¡Eliminado!", "El empleado ha sido eliminado", "success");
+        Swal.fire("¡Eliminado!", "El Proveedor ha sido eliminado", "success");
       }
     });
   };
