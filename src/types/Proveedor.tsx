@@ -1,7 +1,7 @@
 export interface Proveedor {
   id: string;
   nombre: string;
-  contacto: string;
+  correo: string;
   direccion: string;
   telefono: string;
   pais: string;
@@ -9,7 +9,7 @@ export interface Proveedor {
 
 export interface FormularioDatos {
   nombre: string;
-  contacto: string;
+  correo: string;
   direccion: string;
   telefono: string;
   pais: string;

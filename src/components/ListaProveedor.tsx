@@ -15,9 +15,7 @@ const ListaProveedor: React.FC<ListaProveedoresProps> = ({
         <thead>
           <tr>
             <th className="text-left p-2 font-medium text-gray-700">Nombre</th>
-            <th className="text-left p-2 font-medium text-gray-700">
-              Contacto
-            </th>
+            <th className="text-left p-2 font-medium text-gray-700">Correo</th>
             <th className="text-left p-2 font-medium text-gray-700">
               Direccion
             </th>
@@ -34,7 +32,7 @@ const ListaProveedor: React.FC<ListaProveedoresProps> = ({
           {proveedores.map((proveedor) => (
             <tr key={proveedor.id} className="border-t hover:gb-gray-50">
               <td className="p-2 align-middle">{proveedor.nombre}</td>
-              <td className="p-2 align-middle">{proveedor.contacto}</td>
+              <td className="p-2 align-middle">{proveedor.correo}</td>
               <td className="p-2 align-middle">{proveedor.direccion}</td>
               <td className="p-2 align-middle">{proveedor.telefono}</td>
               <td className="p-2 align-middle">{proveedor.pais}</td>

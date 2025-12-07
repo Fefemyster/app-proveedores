@@ -9,7 +9,7 @@ const useFormularioProveedor = (
 ) => {
   const [formularioDatos, setFormularioDatos] = useState<FormularioDatos>({
     nombre: "",
-    contacto: "",
+    correo: "",
     direccion: "",
     telefono: "",
     pais: "",
@@ -19,7 +19,7 @@ const useFormularioProveedor = (
     if (proveedorEditar) {
       setFormularioDatos({
         nombre: proveedorEditar.nombre,
-        contacto: proveedorEditar.contacto,
+        correo: proveedorEditar.correo,
         direccion: proveedorEditar.direccion,
         telefono: proveedorEditar.telefono,
         pais: proveedorEditar.pais,
@@ -43,7 +43,7 @@ const useFormularioProveedor = (
 
     if (
       !formularioDatos.nombre.trim() ||
-      !formularioDatos.contacto.trim() ||
+      !formularioDatos.correo.trim() ||
       !formularioDatos.direccion.trim() ||
       !formularioDatos.pais.trim() ||
       !formularioDatos.telefono
@@ -52,10 +52,24 @@ const useFormularioProveedor = (
       return;
     }
 
+    // ✅ VALIDAR TELÉFONO
+    const regexTelefono = /^[0-9]{8,12}$/;
+    if (!regexTelefono.test(formularioDatos.telefono)) {
+      Swal.fire("Teléfono inválido", "Debe tener 8 a 12 dígitos", "error");
+      return;
+    }
+
+    // ✅ VALIDAR CORREO
+    const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexCorreo.test(formularioDatos.correo)) {
+      Swal.fire("Correo inválido", "Ingrese un correo válido", "error");
+      return;
+    }
+
     const proveedor: Proveedor = {
       id: proveedorEditar?.id ?? "",
       nombre: formularioDatos.nombre,
-      contacto: formularioDatos.contacto,
+      correo: formularioDatos.correo,
       direccion: formularioDatos.direccion,
       telefono: formularioDatos.telefono,
       pais: formularioDatos.pais,
@@ -64,7 +78,7 @@ const useFormularioProveedor = (
     agregarActualizarProveedor(proveedor);
     setFormularioDatos({
       nombre: "",
-      contacto: "",
+      correo: "",
       direccion: "",
       telefono: "",
       pais: "",
@@ -76,7 +90,7 @@ const useFormularioProveedor = (
     setProveedorEditar(null);
     setFormularioDatos({
       nombre: "",
-      contacto: "",
+      correo: "",
       direccion: "",
       telefono: "",
       pais: "",

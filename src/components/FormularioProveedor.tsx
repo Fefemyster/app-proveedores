@@ -31,10 +31,10 @@ const FormularioProveedor: React.FC<Props> = ({
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 mb-1">Contacto</label>
+          <label className="block text-gray-700 mb-1">Correo</label>
           <input
-            name="contacto"
-            value={formularioDatos.contacto}
+            name="correo"
+            value={formularioDatos.correo}
             onChange={manejarCambio}
             className="w-full border px-3 py-2 rounded"
           />
@@ -55,7 +55,11 @@ const FormularioProveedor: React.FC<Props> = ({
           <input
             name="telefono"
             value={formularioDatos.telefono}
-            onChange={manejarCambio}
+            onChange={(e) => {
+              if (/^[0-9]*$/.test(e.target.value)) {
+                manejarCambio(e);
+              }
+            }}
             className="w-full border px-3 py-2 rounded"
           />
         </div>
